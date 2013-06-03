@@ -1,10 +1,6 @@
 module.exports = Backbone.Router.extend
-  routes:
-    '': 'index'
+  initialize: ->
+    @route '', 'index', -> @view 'index'
 
-  index: ->
-    @subpage 'index'
-
-  #set current view and render in layouts $content-part
-  subpage: (name) ->
-    app.trigger "page:render", name
+  view: (name) ->
+    app.trigger "view:change", name

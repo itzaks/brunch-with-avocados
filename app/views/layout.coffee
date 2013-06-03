@@ -5,15 +5,7 @@ module.exports = class Application extends View
   tagName: "body"
 
   bootstrap: ->
-    @listenTo app, "page:render", (which) ->
-      view = new View = require "views/#{ which }"
-      @$page.html view.render().el
-  
-    @$page = @$("#content")
-
-  #on dom ready
-  initialize: (options) ->
-    @setElement options.el
-    super()
-
-    console.log @parts
+    @$views = @$("#views")
+    @listenTo app, "view:change", (view) ->
+      view = new View = require "views/#{ view }"
+      @$views.html view.render().el

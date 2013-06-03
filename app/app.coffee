@@ -1,18 +1,14 @@
-LayoutView = require 'views/layout'
+Layout = require 'views/layout'
+Router = require 'lib/router'
 
 module.exports = class Application
-  name: "brunch-with-avocadoes"
-  views: {}
-  routers: {}
-  events: {}
   constructor: ->
-    _.extend this, Backbone.Events
-
-    @router = new Router = require 'lib/router'
+    _.extend @, Backbone.Events
+    @router = new Router
 
   init: ->
     @chrome()
 
   chrome: ->
-    @layout = new LayoutView
+    @layout = new Layout
       el: $("#application")
