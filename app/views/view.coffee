@@ -1,5 +1,3 @@
-settings = require('settings')
-
 module.exports = class View extends Backbone.View
   debug: off
 
@@ -76,7 +74,7 @@ module.exports = class View extends Backbone.View
 
   getRenderData: ->
     renderData = @model?.toJSON() or {}
-    _.extend renderData, settings.locals
+    _.extend renderData, require 'lib/locals'
 
   render: ->
     @trigger "#{@cid}:render:before", @
