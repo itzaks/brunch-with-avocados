@@ -6,9 +6,5 @@ module.exports = class Application
     _.extend @, Backbone.Events
     @router = new Router
 
-  init: ->
-    @chrome()
-
-  chrome: ->
-    @layout = new Layout
-      el: $("#application")
+  ready: ->
+    @layout = new Layout {el: $("#application")}
